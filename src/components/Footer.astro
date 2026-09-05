@@ -1,0 +1,91 @@
+---
+interface Props {
+  companyName?: string;
+  email?: string;
+  phone?: string;
+}
+
+const {
+  companyName = "Nome Azienda",
+  email = "info@example.com",
+  phone = "+39 000 0000000",
+} = Astro.props;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+
+    <div>
+      <strong>{companyName}</strong>
+      <p>
+        Descrizione breve dell'azienda.
+      </p>
+    </div>
+
+    <div>
+      <strong>Contatti</strong>
+
+      <a href={`mailto:${email}`}>
+        {email}
+      </a>
+
+      <a href={`tel:${phone.replace(/\s/g, "")}`}>
+        {phone}
+      </a>
+    </div>
+
+    <div>
+      <strong>Informazioni</strong>
+
+      <a href="/privacy/">Privacy</a>
+      <a href="/cookie/">Cookie</a>
+    </div>
+
+  </div>
+
+  <div class="container footer-bottom">
+    <span>
+      © {year} {companyName}
+    </span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: 5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-grid > div {
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+  }
+
+  .footer-grid p,
+  .footer-grid a {
+    color: var(--color-muted);
+  }
+
+  .footer-bottom {
+    margin-top: 4rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

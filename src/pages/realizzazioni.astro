@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Projects from "../components/sections/Projects.astro";
+import CTA from "../components/sections/CTA.astro";
+---
+
+<BaseLayout
+  title="Realizzazioni | Motore Digitale"
+  description="Una selezione di progetti Motore Digitale."
+>
+  <Header />
+
+  <main>
+
+    <Projects
+      eyebrow="Realizzazioni"
+      title="Progetti diversi. Una direzione chiara."
+      projects={[
+        {
+          title: "Progetto Demo 01",
+          category: "Sito web",
+        },
+        {
+          title: "Progetto Demo 02",
+          category: "E-commerce",
+        },
+        {
+          title: "Progetto Demo 03",
+          category: "Restyling",
+        },
+        {
+          title: "Progetto Demo 04",
+          category: "Website",
+        },
+      ]}
+    />
+
+    <CTA
+      title="Il prossimo progetto potrebbe essere il tuo."
+      label="Parliamone"
+      href="/contatti/"
+    />
+
+  </main>
+
+  <Footer companyName="Motore Digitale" />
+</BaseLayout>

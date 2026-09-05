@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Services from "../components/sections/Services.astro";
+import CTA from "../components/sections/CTA.astro";
+---
+
+<BaseLayout
+  title="Servizi | Motore Digitale"
+  description="Servizi web Motore Digitale."
+>
+  <Header />
+
+  <main>
+
+    <Services
+      eyebrow="Servizi"
+      title="Siti costruiti intorno al business."
+      services={[
+        {
+          title: "Siti web",
+          text: "Siti vetrina moderni, veloci e ottimizzati per smartphone.",
+        },
+        {
+          title: "E-commerce",
+          text: "Soluzioni ecommerce curate e semplici da gestire.",
+        },
+        {
+          title: "Restyling",
+          text: "Riprogettazione completa di siti esistenti.",
+        },
+      ]}
+    />
+
+    <CTA
+      title="Hai un progetto?"
+      text="Partiamo dagli obiettivi reali della tua attività."
+      label="Contattaci"
+      href="/contatti/"
+    />
+
+  </main>
+
+  <Footer companyName="Motore Digitale" />
+</BaseLayout>

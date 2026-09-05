@@ -1,17 +1,262 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import CTA from "../components/sections/CTA.astro";
+import Services from "../components/sections/Services.astro";
+import Projects from "../components/sections/Projects.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Motore Digitale Starter"
+  description="Starter professionale e riutilizzabile per i siti web Motore Digitale."
+>
+  <Header />
+
+  <main>
+
+    <Hero
+      eyebrow="Motore Digitale Starter"
+      title="Una base solida. Ogni volta un sito diverso."
+      text="Questo starter contiene struttura, SEO, responsive e componenti riutilizzabili per costruire siti web professionali più velocemente."
+      primaryLabel="Scopri il sistema"
+      primaryHref="#sistema"
+      secondaryLabel="Contatti"
+      secondaryHref="/contatti/"
+    />
+
+    <section id="sistema" class="section">
+      <div class="container system-grid">
+
+        <div>
+          <p class="eyebrow">
+            Il sistema
+          </p>
+
+          <h2>
+            Costruito per essere riutilizzato.
+          </h2>
+        </div>
+
+        <div class="system-content">
+          <p>
+            Motore Digitale Starter è la base tecnica comune
+            dei nostri progetti.
+          </p>
+
+          <p>
+            Layout, responsive, SEO, componenti e controlli
+            sono già predisposti. Ogni nuovo sito può quindi
+            concentrarsi sulla parte più importante:
+            identità, contenuti ed esperienza.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section features">
+      <div class="container">
+
+        <div class="features-grid">
+
+          <article>
+            <span>01</span>
+
+            <h3>
+              Veloce
+            </h3>
+
+            <p>
+              Astro genera siti leggeri e performanti,
+              evitando JavaScript non necessario.
+            </p>
+          </article>
+
+          <article>
+            <span>02</span>
+
+            <h3>
+              Riutilizzabile
+            </h3>
+
+            <p>
+              Componenti e struttura possono essere
+              utilizzati come punto di partenza per
+              ogni nuovo cliente.
+            </p>
+          </article>
+
+          <article>
+            <span>03</span>
+
+            <h3>
+              AI ready
+            </h3>
+
+            <p>
+              Codex può leggere brief, design system,
+              contenuti e regole prima di intervenire
+              sul progetto.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+    <Services
+  eyebrow="Servizi"
+  title="Una struttura pronta a essere adattata."
+  services={[
+    {
+      title: "Siti web",
+      text: "Siti veloci, responsive e costruiti intorno agli obiettivi reali del cliente.",
+      href: "/servizi/",
+    },
+    {
+      title: "E-commerce",
+      text: "Esperienze di vendita online semplici, curate e facili da gestire.",
+      href: "/servizi/",
+    },
+    {
+      title: "Restyling",
+      text: "Riprogettazione di siti esistenti mantenendo ciò che funziona e migliorando il resto.",
+      href: "/servizi/",
+    },
+  ]}
+/>
+
+<Projects
+  eyebrow="Realizzazioni"
+  title="Ogni progetto parte dalla stessa base. Il risultato deve sembrare unico."
+  projects={[
+    {
+      title: "Progetto Demo 01",
+      category: "Sito web",
+      href: "/realizzazioni/",
+    },
+    {
+      title: "Progetto Demo 02",
+      category: "E-commerce",
+      href: "/realizzazioni/",
+    },
+  ]}
+/>
+    <CTA
+      title="Pronto per il prossimo progetto?"
+      text="Questa struttura diventerà la base di partenza per tutti i siti Motore Digitale."
+      label="Parliamone"
+      href="/contatti/"
+    />
+
+  </main>
+
+  <Footer
+    companyName="Motore Digitale"
+    email="info@motoredigitale.com"
+  />
+
+</BaseLayout>
+
+<style>
+  .system-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: start;
+  }
+
+  .eyebrow {
+    margin-bottom: 1rem;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  h2 {
+    max-width: 700px;
+    margin-bottom: 0;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .system-content {
+    max-width: 600px;
+    padding-top: 2rem;
+  }
+
+  .system-content p {
+    color: var(--color-muted);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.6;
+  }
+
+  .system-content p:first-child {
+    color: var(--color-text);
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  }
+
+  .features {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+  }
+
+  article {
+    min-height: 320px;
+    padding: clamp(2rem, 4vw, 3rem);
+    background: var(--color-bg);
+  }
+
+  article span {
+    display: block;
+    margin-bottom: 5rem;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+  }
+
+  article h3 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    letter-spacing: -0.04em;
+  }
+
+  article p {
+    max-width: 350px;
+    margin-bottom: 0;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 768px) {
+    .system-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .system-content {
+      padding-top: 0;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    article {
+      min-height: auto;
+    }
+
+    article span {
+      margin-bottom: 3rem;
+    }
+  }
+</style>

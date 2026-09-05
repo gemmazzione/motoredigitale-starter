@@ -1,0 +1,157 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  logoText?: string;
+  navItems?: NavItem[];
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  logoText = "LOGO",
+  navItems = [
+    { label: "Home", href: "/" },
+    { label: "Servizi", href: "/servizi/" },
+    { label: "Realizzazioni", href: "/realizzazioni/" },
+    { label: "Contatti", href: "/contatti/" },
+  ],
+  ctaLabel = "Contattaci",
+  ctaHref = "/contatti/",
+} = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">
+      {logoText}
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navigazione principale">
+      {
+        navItems.map((item) => (
+          <a href={item.href}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a class="desktop-cta" href={ctaHref}>
+      {ctaLabel}
+    </a>
+
+    <details class="mobile-menu">
+      <summary aria-label="Apri menu">
+        Menu
+      </summary>
+
+      <nav aria-label="Navigazione mobile">
+        {
+          navItems.map((item) => (
+            <a href={item.href}>
+              {item.label}
+            </a>
+          ))
+        }
+
+        <a class="mobile-cta" href={ctaHref}>
+          {ctaLabel}
+        </a>
+      </nav>
+    </details>
+
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    z-index: 100;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+
+  .header-inner {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .logo {
+    margin-right: auto;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .desktop-nav a {
+    color: var(--color-muted);
+    transition: color var(--transition);
+  }
+
+  .desktop-nav a:hover {
+    color: var(--color-text);
+  }
+
+  .desktop-cta,
+  .mobile-cta {
+    padding: 0.8rem 1.1rem;
+    background: var(--color-accent);
+    color: white;
+    border-radius: var(--radius-sm);
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav,
+    .desktop-cta {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: block;
+      position: relative;
+    }
+
+    .mobile-menu summary {
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .mobile-menu summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mobile-menu nav {
+      position: absolute;
+      top: calc(100% + 1rem);
+      right: 0;
+      min-width: 240px;
+      padding: 1rem;
+      display: grid;
+      gap: 1rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+    }
+
+    .mobile-cta {
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+  }
+</style>
