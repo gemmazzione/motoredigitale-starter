@@ -145,3 +145,11 @@ Run:
 npm run build
 
 Fix errors before completion.
+
+## Workflows
+
+Use these workflow documents when appropriate:
+
+- Build: docs/workflows/BUILD.md
+- Review: docs/workflows/REVIEW.md
+- Delivery: docs/workflows/DELIVER.md
